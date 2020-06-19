@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="#B5CADE"
+    >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="أرسل إقتراح"
+        android:textSize="@dimen/_14ssp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_6ssp"
+        android:text="برجاء ابلاغنا بمقترحاتك"
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@android:color/black"
+        />
+
+    <EditText
+        android:id="@+id/editTextDialogUserInput"
+        android:layout_marginTop="@dimen/_18ssp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="اكتب طلبك هنا"
+        android:textColor="@android:color/black"
+        android:textAlignment="center"
+        android:background="@drawable/ic_rounded_button_yellow"
+        android:padding="@dimen/_6ssp">
+    </EditText>
+
+</LinearLayout>

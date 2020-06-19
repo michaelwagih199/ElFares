@@ -1,0 +1,316 @@
+{
+  "androidLink" : "https://apps.apple.com/us/app/%D8%A7%D9%84%D9%81%D8%A7%D8%B1%D8%B3/id1508429521?ls=1",
+  "appLink" : "https://apps.apple.com/us/app/%D8%A7%D9%84%D9%81%D8%A7%D8%B1%D8%B3/id1508429521?ls=1",
+  "banners" : {
+    "channels" : {
+      "link" : "https://wa.me/96550269998",
+      "pic" : "https://www5.0zz0.com/2020/05/08/17/573226301.png"
+    },
+    "home" : {
+      "link" : "https://www.snapchat.com/add/pscp_rm",
+      "pic" : "https://www7.0zz0.com/2020/05/02/18/804792069.png"
+    },
+    "matches" : {
+      "link" : "https://www.snapchat.com/add/pscp_rm",
+      "pic" : "https://www7.0zz0.com/2020/05/02/18/804792069.png"
+    },
+    "news" : {
+      "link" : "https://www.snapchat.com/add/pscp_rm",
+      "pic" : "https://www7.0zz0.com/2020/05/02/18/804792069.png"
+    },
+    "setting" : {
+      "link" : "https://www.snapchat.com/add/pscp_rm",
+      "pic" : "https://www7.0zz0.com/2020/05/02/18/804792069.png"
+    }
+  },
+  "channels" : {
+    "ch1" : {
+      "frequency" : "11965 - 27500 - H",
+      "link" : "http://95.216.245.204:8081/mn2/mn2/playlist.m3u8",
+      "name" : "Bein Sport 1",
+      "pic" : "https://firebasestorage.googleapis.com/v0/b/elfares-live.appspot.com/o/channels%2FBein.png?alt=media&token=5f155aff-6f1c-4ac6-9fdd-eed88b0fd4f9"
+    },
+    "ch10" : {
+      "frequency" : "3632-5254",
+      "link" : "https://admdn4.cdn.mangomolo.com/adsports4/smil:adsports4.stream.smil/playlist.m3u8",
+      "name" : "Ad Sport 4",
+      "pic" : "https://www.baldak-news.com/wp-content/uploads/2019/09/%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%D8%A9.jpg"
+    },
+    "ch11" : {
+      "frequency" : "32555-96554",
+      "link" : "https://edge-1192-ch-gv.filmon.com/live/1781.low.stream/playlist.m3u8",
+      "name" : " Ksa Sport 1 ",
+      "pic" : "https://www.klma.org/wp-content/uploads/2019/07/ksa-sports.png"
+    },
+    "ch12" : {
+      "frequency" : "5214-965",
+      "link" : "https://edge-1192-ch-gv.filmon.com/live/1778.low.stream/playlist.m3u8",
+      "name" : "Ksa Sport 2",
+      "pic" : "https://www.klma.org/wp-content/uploads/2019/07/ksa-sports.png"
+    },
+    "ch13" : {
+      "frequency" : "9685-7484",
+      "link" : "https://alkasmsl4.akamaized.net/hls/live/2003123/alkass1laoGlw/master.m3u8",
+      "name" : "Alkass Sport 1",
+      "pic" : "https://upload.wikimedia.org/wikipedia/commons/7/7f/%D8%B4%D8%B9%D8%A7%D8%B1_%D9%82%D9%86%D9%88%D8%A7%D8%AA_%D8%A7%D9%84%D9%83%D8%AA%D8%B3.jpg"
+    },
+    "ch14" : {
+      "frequency" : "8587-9958",
+      "link" : "https://alkasmsl4.akamaized.net/hls/live/2003123/alkass2baIzzy/master.m3u8",
+      "name" : "Alkass Sport 2",
+      "pic" : "https://upload.wikimedia.org/wikipedia/commons/7/7f/%D8%B4%D8%B9%D8%A7%D8%B1_%D9%82%D9%86%D9%88%D8%A7%D8%AA_%D8%A7%D9%84%D9%83%D8%AA%D8%B3.jpg"
+    },
+    "ch15" : {
+      "frequency" : "5544",
+      "link" : "https://alkasmsl4.akamaized.net/hls/live/2003123/alkass4fzjeApo/master.m3u8",
+      "name" : "Alkass Sport 4",
+      "pic" : "https://upload.wikimedia.org/wikipedia/commons/7/7f/%D8%B4%D8%B9%D8%A7%D8%B1_%D9%82%D9%86%D9%88%D8%A7%D8%AA_%D8%A7%D9%84%D9%83%D8%AA%D8%B3.jpg"
+    },
+    "ch16" : {
+      "frequency" : "55854",
+      "link" : "http://livecdnh3.tvanywhere.ae/hls/mbc2/03.m3u8",
+      "name" : "MBC 2",
+      "pic" : "https://upload.wikimedia.org/wikipedia/commons/5/50/MBC2_Logo.png"
+    },
+    "ch17" : {
+      "frequency" : "6965",
+      "link" : "http://livecdnh2.tvanywhere.ae/hls/mbc_drama/04.m3u8",
+      "name" : "MBC Drama",
+      "pic" : "https://i.pinimg.com/originals/a7/e1/47/a7e147bf74690f3752a219a74f798e40.png"
+    },
+    "ch18" : {
+      "frequency" : "5478-8587",
+      "link" : "https://stream02.fasttelco.net/live/alrai.stream/chunklist_w2016300190.m3u8",
+      "name" : "Alrai Tv",
+      "pic" : "https://www.alraimedia.com/TV/Frontend/ALRAiTV_in_red_circle.png"
+    },
+    "ch19" : {
+      "frequency" : "96988-27500",
+      "link" : "https://admdn2.cdn.mangomolo.com/adtv/smil:adtv.stream.smil/chunklist_b1800000_t64NzIwcA==.m3u8",
+      "name" : "Abu Dhabi",
+      "pic" : "https://admedia.ae/images/Brands/20202231158324351.png"
+    },
+    "ch2" : {
+      "frequency" : "11965 - 27500 - H",
+      "link" : "http://95.216.245.204:8081/mn3/mn3/playlist.m3u8",
+      "name" : "Bein Sport 2",
+      "pic" : "https://firebasestorage.googleapis.com/v0/b/elfares-live.appspot.com/o/channels%2FBein.png?alt=media&token=5f155aff-6f1c-4ac6-9fdd-eed88b0fd4f9"
+    },
+    "ch20" : {
+      "frequency" : "52114-27500",
+      "link" : "https://admdn5.cdn.mangomolo.com/drama/smil:drama.stream.smil/chunklist_b1800000_t64NzIwcA==.m3u8",
+      "name" : "Abu Dhabi Drama",
+      "pic" : "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRVmFRMP6Dsyvdf0Xr5Q_YYlp5rZg1fRVVIalZISBUKC2QQffUc&usqp=CAU"
+    },
+    "ch21" : {
+      "frequency" : "25668-27500",
+      "link" : "https://shls-mbc5-prod.shahid.net/mbc5-prod_4.m3u8",
+      "name" : "MBC 5",
+      "pic" : "https://www.mbc.net/dam/jcr:fbef6d28-28d2-46b7-a37a-c49ede8eb341/mbc5.png"
+    },
+    "ch22" : {
+      "frequency" : "6585-2565",
+      "link" : "https://shls-mbcplusdrama-prod.shahid.net/mbcplusdrama-prod_4.m3u8",
+      "name" : "MBC Drama +",
+      "pic" : "https://1.bp.blogspot.com/-iRfE7OoRkng/Xm9eWNoQb-I/AAAAAAAAKWI/BD-DcuLcR6IC1MMK0qINVwgcXZRpOqRPwCLcBGAsYHQ/w1200-h630-p-k-no-nu/%25D9%2582%25D9%2586%25D8%25A7%25D8%25A9%2B%25D8%25A7%25D9%2585%2B%25D8%25A8%25D9%2589%2B%25D8%25B3%25D9%2589%2B%25D8%25AF%25D8%25B1%25D8%25A7%25D9%2585%25D8%25A7%2B%25D8%25A8%25D9%2584%25D8%25B3.webp"
+    },
+    "ch23" : {
+      "frequency" : "6965-8547",
+      "link" : "http://livecdnh1.tvanywhere.ae/hls/nat_geo_wild/04.m3u8",
+      "name" : "Nat Geo Wild",
+      "pic" : "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/National_Geographic_Wild_logo.svg/1200px-National_Geographic_Wild_logo.svg.png"
+    },
+    "ch24" : {
+      "frequency" : "9687-27500",
+      "link" : "https://admdn2.cdn.mangomolo.com/nagtv/smil:nagtv.stream.smil/chunklist_b800000_t64NDgwcA==.m3u8",
+      "name" : "Nat Geo",
+      "pic" : "https://seeklogo.net/wp-content/uploads/2016/05/national-geographic-channel-logo-vector-download.jpg"
+    },
+    "ch25" : {
+      "frequency" : "5124-27500",
+      "link" : "https://cllive.itworkscdn.net/sbclive/token=nva=1590881522~dirs=1~hash=03a9ebd0812bb3a7af5b4/sbc.smil/sbc_720p_chunks.m3u8",
+      "name" : "SBC",
+      "pic" : "https://www.shashatcom.sa/assets/themes/TriTheme/images/channels/sbc-colored.png"
+    },
+    "ch26" : {
+      "frequency" : "12558-27500",
+      "link" : "http://livecdnh3.tvanywhere.ae/hls/mbcaction/02.m3u8",
+      "name" : "MBC Action",
+      "pic" : "https://www.tv.wataan.com/uploads/2542019-050746PM.jpg"
+    },
+    "ch27" : {
+      "frequency" : "11322-27500 h",
+      "link" : "http://95.216.245.204:8888/11/index.m3u8",
+      "name" : "WWE",
+      "pic" : "data:image/jpeg;base64,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"
+    },
+    "ch3" : {
+      "frequency" : "11965 - 27500",
+      "link" : "http://95.216.245.204:8081/ksa1/ksa1/playlist.m3u8",
+      "name" : "Bein Sport 3",
+      "pic" : "https://firebasestorage.googleapis.com/v0/b/elfares-live.appspot.com/o/channels%2FBein.png?alt=media&token=5f155aff-6f1c-4ac6-9fdd-eed88b0fd4f9"
+    },
+    "ch4" : {
+      "frequency" : "11965 - 27500 - H",
+      "link" : "http://95.216.245.204:8081/mn4/mn4/playlist.m3u8",
+      "name" : "Bein Sport 4",
+      "pic" : "https://firebasestorage.googleapis.com/v0/b/elfares-live.appspot.com/o/channels%2FBein.png?alt=media&token=5f155aff-6f1c-4ac6-9fdd-eed88b0fd4f9"
+    },
+    "ch5" : {
+      "frequency" : "11965 - 27500 - H",
+      "link" : "http://95.216.245.204:8081/mn5/mn5/playlist.m3u8",
+      "name" : "Bein Sport 5",
+      "pic" : "https://firebasestorage.googleapis.com/v0/b/elfares-live.appspot.com/o/channels%2FBein.png?alt=media&token=5f155aff-6f1c-4ac6-9fdd-eed88b0fd4f9"
+    },
+    "ch6" : {
+      "frequency" : "11965 - 27500 - V",
+      "link" : "http://95.216.245.204:8081/mn6/mn6/playlist.m3u8",
+      "name" : "Bein Sport 6",
+      "pic" : "https://firebasestorage.googleapis.com/v0/b/elfares-live.appspot.com/o/channels%2FBein.png?alt=media&token=5f155aff-6f1c-4ac6-9fdd-eed88b0fd4f9"
+    },
+    "ch7" : {
+      "frequency" : "11965 - 27500 - H",
+      "link" : "https://admdn1.cdn.mangomolo.com/adsports1/smil:adsports1.stream.smil/playlist.m3u8",
+      "name" : "Ad Sport 1",
+      "pic" : "https://www.baldak-news.com/wp-content/uploads/2019/09/%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%D8%A9.jpg"
+    },
+    "ch8" : {
+      "frequency" : "12588-9685",
+      "link" : "https://admdn5.cdn.mangomolo.com/adsports2/smil:adsports2.stream.smil/playlist.m3u8",
+      "name" : "Ad Sport 2",
+      "pic" : "https://www.baldak-news.com/wp-content/uploads/2019/09/%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%D8%A9.jpg"
+    },
+    "ch9" : {
+      "frequency" : "5854-968",
+      "link" : "https://admdn3.cdn.mangomolo.com/adsports3/smil:adsports3.stream.smil/playlist.m3u8",
+      "name" : "Ad Sport 3",
+      "pic" : "https://www.baldak-news.com/wp-content/uploads/2019/09/%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%D8%A9.jpg"
+    }
+  },
+  "matches" : {
+    "m1" : {
+      "channel" : "Bein HD1",
+      "day" : "14/6/2020",
+      "enabled" : true,
+      "league" : "الدوري الاسباني",
+      "link" : "http://95.216.245.204:8081/ksa1/ksa1/playlist.m3u8",
+      "result" : "VS",
+      "teams" : {
+        "team1" : {
+          "logo" : "https://ssl.gstatic.com/onebox/media/sports/logos/srAAE0bOnCppUrlbJpFiHQ_96x96.png",
+          "name" : "اتلتيكو مدريد"
+        },
+        "team2" : {
+          "logo" : "https://ssl.gstatic.com/onebox/media/sports/logos/OSL_5Zm6kYPP1J17Bo5uDA_96x96.png",
+          "name" : "اتلتيك بيلباو"
+        }
+      },
+      "time" : "3:00 م"
+    },
+    "m2" : {
+      "channel" : "Bein HD1",
+      "day" : "14/6/2020",
+      "enabled" : true,
+      "league" : "الدوري الاسباني",
+      "link" : "http://95.216.245.204:8081/ksa1/ksa1/playlist.m3u8",
+      "result" : "VS",
+      "teams" : {
+        "team1" : {
+          "logo" : "https://ssl.gstatic.com/onebox/media/sports/logos/Th4fAVAZeCJWRcKoLW7koA_96x96.png",
+          "name" : "ريال مدريد"
+        },
+        "team2" : {
+          "logo" : "https://ssl.gstatic.com/onebox/media/sports/logos/sbTFnFgPeUsTa-szphHf8Q_96x96.png",
+          "name" : "ايبار"
+        }
+      },
+      "time" : "8:30 م"
+    },
+    "m3" : {
+      "channel" : "قناة اجنبية",
+      "day" : "13/6/2020",
+      "enabled" : false,
+      "league" : "كأس ايطاليا",
+      "link" : "http://95.216.245.204:8081/mn4/mn4/playlist.m3u8",
+      "result" : "VS",
+      "teams" : {
+        "team1" : {
+          "logo" : "https://ssl.gstatic.com/onebox/media/sports/logos/gpWqqaYc9yESzfkfspryoA_96x96.png",
+          "name" : "انترميلان"
+        },
+        "team2" : {
+          "logo" : "https://ssl.gstatic.com/onebox/media/sports/logos/PWRLYBJqlGrAAsKkUN6eng_96x96.png",
+          "name" : "نابولي"
+        }
+      },
+      "time" : "10:00 م"
+    },
+    "m4" : {
+      "channel" : "Bein HD3",
+      "day" : "13/6/2020",
+      "enabled" : false,
+      "league" : "الدوري الاسباني",
+      "link" : "http://95.216.245.204:8081/ksa1/ksa1/playlist.m3u8",
+      "result" : "VS",
+      "teams" : {
+        "team1" : {
+          "logo" : "https://ssl.gstatic.com/onebox/media/sports/logos/paYnEE8hcrP96neHRNofhQ_96x96.png",
+          "name" : "برشلونة"
+        },
+        "team2" : {
+          "logo" : "https://ssl.gstatic.com/onebox/media/sports/logos/Ss21P4CUmigjrEtcoapjVg_96x96.png",
+          "name" : "مايوركا"
+        }
+      },
+      "time" : "11:00 م"
+    }
+  },
+  "news" : {
+    "n1" : {
+      "details" : "يبدو أن برشلونة قد حدد موقفه من لاعبه البرازيلي فيليب كوتينيو، والذي تنتهي إعارته إلى بايرن ميونخ بنهاية الموسم الجاري.  ويلعب كوتينيو مع بايرن على سبيل الإعارة منذ انطلاق الموسم الجاري، ويملك النادي البافاري خيارًا بأحقية الشراء مقابل 120 مليون يورو، لكن من المرجح ألا يتم تفعيل هذا البند، لعدم ظهور اللاعب بالمستوى المنتظر منه.  وبحسب موقع \"le10sport\" الفرنسي، فإن برشلونة استقر على إدخال كوتينيو في أي من صفقاته التي يسعى لإبرامها في الصيف.  ويعتبر كوتينيو خيارًا جيدًا لباريس سان جيرمان، والذي يسعى برشلونة للتعاقد مع نجمه نيمار دا سيلفا، حيث يرى ليوناردو، المدير الرياضي للباريسيين أن فيليب سيستعيد مستواه الذي ظهر به مع ليفربول في حديقة الأمراء",
+      "link" : "https://www.elfares-live.com/2020/03/blog-post_28.html",
+      "pic" : "https://1.bp.blogspot.com/-lejdlB9UZRk/XoymNrANhYI/AAAAAAAABIg/HfMNaP5hthYb-rxbscc1H7gQCTSYpFoUgCLcBGAsYHQ/s1600/860.jpg",
+      "title" : "كوتينيو سلاح برشلونة في الميركاتو الصيفي"
+    },
+    "n2" : {
+      "details" : "يبدو أن برشلونة قد حدد موقفه من لاعبه البرازيلي فيليب كوتينيو، والذي تنتهي إعارته إلى بايرن ميونخ بنهاية الموسم الجاري.  ويلعب كوتينيو مع بايرن على سبيل الإعارة منذ انطلاق الموسم الجاري، ويملك النادي البافاري خيارًا بأحقية الشراء مقابل 120 مليون يورو، لكن من المرجح ألا يتم تفعيل هذا البند، لعدم ظهور اللاعب بالمستوى المنتظر منه.  وبحسب موقع \"le10sport\" الفرنسي، فإن برشلونة استقر على إدخال كوتينيو في أي من صفقاته التي يسعى لإبرامها في الصيف.  ويعتبر كوتينيو خيارًا جيدًا لباريس سان جيرمان، والذي يسعى برشلونة للتعاقد مع نجمه نيمار دا سيلفا، حيث يرى ليوناردو، المدير الرياضي للباريسيين أن فيليب سيستعيد مستواه الذي ظهر به مع ليفربول في حديقة الأمراء",
+      "link" : "https://www.elfares-live.com/2020/04/2021.html",
+      "pic" : "https://1.bp.blogspot.com/-ichx8RFglNM/Xoys6cFUDyI/AAAAAAAABLo/vUHXvRbiAIYeCnd8TKGU5szOYEIx2ItKACLcBGAsYHQ/s1600/GettyImages-913318882.jpg",
+      "title" : "أمم أفريقيا 2021 بين سيناريو التأجيل وصعوبة التنظيم"
+    },
+    "n3" : {
+      "details" : "يبدو أن برشلونة قد حدد موقفه من لاعبه البرازيلي فيليب كوتينيو، والذي تنتهي إعارته إلى بايرن ميونخ بنهاية الموسم الجاري.  ويلعب كوتينيو مع بايرن على سبيل الإعارة منذ انطلاق الموسم الجاري، ويملك النادي البافاري خيارًا بأحقية الشراء مقابل 120 مليون يورو، لكن من المرجح ألا يتم تفعيل هذا البند، لعدم ظهور اللاعب بالمستوى المنتظر منه.  وبحسب موقع \"le10sport\" الفرنسي، فإن برشلونة استقر على إدخال كوتينيو في أي من صفقاته التي يسعى لإبرامها في الصيف.  ويعتبر كوتينيو خيارًا جيدًا لباريس سان جيرمان، والذي يسعى برشلونة للتعاقد مع نجمه نيمار دا سيلفا، حيث يرى ليوناردو، المدير الرياضي للباريسيين أن فيليب سيستعيد مستواه الذي ظهر به مع ليفربول في حديقة الأمراء",
+      "link" : "https://www.elfares-live.com/2020/03/blog-post_66.html",
+      "pic" : "https://1.bp.blogspot.com/-IJHF0WRWMdg/Xoyl__qZBWI/AAAAAAAABIc/qIdnEFPsBeUMlNnbj9cVQY3Kje8VjiHEgCLcBGAsYHQ/s1600/93830.jpg",
+      "title" : "كوليبالي يضع قدمه الأولى في باريس"
+    },
+    "n4" : {
+      "details" : "يبدو أن برشلونة قد حدد موقفه من لاعبه البرازيلي فيليب كوتينيو، والذي تنتهي إعارته إلى بايرن ميونخ بنهاية الموسم الجاري.  ويلعب كوتينيو مع بايرن على سبيل الإعارة منذ انطلاق الموسم الجاري، ويملك النادي البافاري خيارًا بأحقية الشراء مقابل 120 مليون يورو، لكن من المرجح ألا يتم تفعيل هذا البند، لعدم ظهور اللاعب بالمستوى المنتظر منه.  وبحسب موقع \"le10sport\" الفرنسي، فإن برشلونة استقر على إدخال كوتينيو في أي من صفقاته التي يسعى لإبرامها في الصيف.  ويعتبر كوتينيو خيارًا جيدًا لباريس سان جيرمان، والذي يسعى برشلونة للتعاقد مع نجمه نيمار دا سيلفا، حيث يرى ليوناردو، المدير الرياضي للباريسيين أن فيليب سيستعيد مستواه الذي ظهر به مع ليفربول في حديقة الأمراء",
+      "link" : "https://www.elfares-live.com/2020/04/blog-post_24.html",
+      "pic" : "https://1.bp.blogspot.com/-cFYQOPoiHGo/XqMSH-BMR_I/AAAAAAAABMU/oa4PlFsQY5Yd6ScG3UqFbbDQ8DlQuEOsQCLcBGAsYHQ/s1600/%25D8%25AA%25D9%2586%25D8%25B2%25D9%258A%25D9%2584.jpg",
+      "title" : "رسميا.. إلغاء الدوري الهولندي"
+    },
+    "n5" : {
+      "details" : "يبدو أن برشلونة قد حدد موقفه من لاعبه البرازيلي فيليب كوتينيو، والذي تنتهي إعارته إلى بايرن ميونخ بنهاية الموسم الجاري.  ويلعب كوتينيو مع بايرن على سبيل الإعارة منذ انطلاق الموسم الجاري، ويملك النادي البافاري خيارًا بأحقية الشراء مقابل 120 مليون يورو، لكن من المرجح ألا يتم تفعيل هذا البند، لعدم ظهور اللاعب بالمستوى المنتظر منه.  وبحسب موقع \"le10sport\" الفرنسي، فإن برشلونة استقر على إدخال كوتينيو في أي من صفقاته التي يسعى لإبرامها في الصيف.  ويعتبر كوتينيو خيارًا جيدًا لباريس سان جيرمان، والذي يسعى برشلونة للتعاقد مع نجمه نيمار دا سيلفا، حيث يرى ليوناردو، المدير الرياضي للباريسيين أن فيليب سيستعيد مستواه الذي ظهر به مع ليفربول في حديقة الأمراء",
+      "link" : "https://www.elfares-live.com/2020/04/blog-post_27.html",
+      "pic" : "https://1.bp.blogspot.com/-hl9gQLDdtck/Xqb1d--tBTI/AAAAAAAABM0/lGREn6fbmLA0KviFdgoKtG__8_QiOA8EACLcBGAsYHQ/s1600/%25D8%25AA%25D9%2586%25D8%25B2%25D9%258A%25D9%2584%2B%25281%2529.jpg",
+      "title" : "ريال مدريد يتأهب للتخلص من حمولته الزائدة"
+    },
+    "n6" : {
+      "details" : "يبدو أن برشلونة قد حدد موقفه من لاعبه البرازيلي فيليب كوتينيو، والذي تنتهي إعارته إلى بايرن ميونخ بنهاية الموسم الجاري.  ويلعب كوتينيو مع بايرن على سبيل الإعارة منذ انطلاق الموسم الجاري، ويملك النادي البافاري خيارًا بأحقية الشراء مقابل 120 مليون يورو، لكن من المرجح ألا يتم تفعيل هذا البند، لعدم ظهور اللاعب بالمستوى المنتظر منه.  وبحسب موقع \"le10sport\" الفرنسي، فإن برشلونة استقر على إدخال كوتينيو في أي من صفقاته التي يسعى لإبرامها في الصيف.  ويعتبر كوتينيو خيارًا جيدًا لباريس سان جيرمان، والذي يسعى برشلونة للتعاقد مع نجمه نيمار دا سيلفا، حيث يرى ليوناردو، المدير الرياضي للباريسيين أن فيليب سيستعيد مستواه الذي ظهر به مع ليفربول في حديقة الأمراء",
+      "link" : "https://www.elfares-live.com/2020/04/blog-post_47.html",
+      "pic" : "https://vid.alarabiya.net/images/2020/03/07/5de366b3-0758-4400-9736-d06c5a0e5a44/5de366b3-0758-4400-9736-d06c5a0e5a44_16x9_1200x676.jpg?format=jpeg&width=960",
+      "title" : "رونالدينيو يكسر صمته لأول مرة بعد الخروج من السجن"
+    },
+    "n7" : {
+      "details" : "يبدو أن برشلونة قد حدد موقفه من لاعبه البرازيلي فيليب كوتينيو، والذي تنتهي إعارته إلى بايرن ميونخ بنهاية الموسم الجاري.  ويلعب كوتينيو مع بايرن على سبيل الإعارة منذ انطلاق الموسم الجاري، ويملك النادي البافاري خيارًا بأحقية الشراء مقابل 120 مليون يورو، لكن من المرجح ألا يتم تفعيل هذا البند، لعدم ظهور اللاعب بالمستوى المنتظر منه.  وبحسب موقع \"le10sport\" الفرنسي، فإن برشلونة استقر على إدخال كوتينيو في أي من صفقاته التي يسعى لإبرامها في الصيف.  ويعتبر كوتينيو خيارًا جيدًا لباريس سان جيرمان، والذي يسعى برشلونة للتعاقد مع نجمه نيمار دا سيلفا، حيث يرى ليوناردو، المدير الرياضي للباريسيين أن فيليب سيستعيد مستواه الذي ظهر به مع ليفربول في حديقة الأمراء",
+      "link" : "https://www.elfares-live.com/2020/05/blog-post.html",
+      "pic" : "https://1.bp.blogspot.com/-4hl1Uqd7S9E/XrFhSvzZehI/AAAAAAAABNw/_xF_zvHUvWY03hmsK4_qxABpMQmnv5t-QCLcBGAsYHQ/s400/%25D8%25AA%25D9%2586%25D8%25B2%25D9%258A%25D9%2584.jpg",
+      "title" : "برشلونة وإنتر ميلان يتفقان على مقابل لاوتارو"
+    }
+  },
+  "problems" : {
+    "-M9myIx2GHxelDUTx4wx" : "السلام عليكم البث بدون صوت "
+  },
+  "review" : "false"
+}

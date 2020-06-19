@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ic_rounded_button_grey"
+    android:padding="@dimen/_6ssp"
+    android:layout_margin="@dimen/_8ssp">
+
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="أرسل إقتراح"
+        android:textSize="@dimen/_14ssp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_6ssp"
+        android:text="برجاء ابلاغنا بمقترحاتك"
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@android:color/black"
+        />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:padding="@dimen/_6ssp"
+        android:layout_margin="@dimen/_6ssp"
+        android:hint="اكتب طلبك هنا"
+        android:textAlignment="center"
+        android:background="@drawable/ic_rounded_button_yellow"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#B5CADE"
+            android:text="الغاء"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#B5CADE"
+            android:text="ارسل"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
