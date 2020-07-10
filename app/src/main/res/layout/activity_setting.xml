@@ -31,29 +31,29 @@
         android:id="@+id/btnShareApp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/ic_rounded_button_yellow"
         android:text="نشر التطبيق"
         android:textSize="@dimen/_18ssp"
-        android:background="@drawable/ic_rounded_button_yellow"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <Button
         android:id="@+id/btnMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="24dp"
-        android:text="ارسل اقتراح او شكوى"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/ic_rounded_button_yellow"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="ارسل اقتراح او شكوى"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toBottomOf="@+id/btnShareApp" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -73,7 +73,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMessage"
-        app:srcCompat="@android:drawable/stat_notify_error" />
+        app:layout_constraintTop_toBottomOf="@+id/btnMessage" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="32dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="379dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

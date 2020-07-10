@@ -1,6 +1,7 @@
 
 package com.polimigo.elfares.activities
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -9,23 +10,26 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.database.*
 import com.polimigo.elfares.R
-import com.polimigo.elfares.entities.BannerModel
-import com.polimigo.elfares.entities.CommentModel
+import com.polimigo.elfares.entities.banner.BannerModel
 import com.squareup.picasso.Picasso
+import kotlincodes.com.retrofitwithkotlin.retrofit.ApiClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     val arrayList = ArrayList<BannerModel>()//Creating an empty arraylist
+    lateinit var progerssProgressDialog: ProgressDialog
     private lateinit var mContext: Context
+    private lateinit var addImagUrl:String
     var imgVmach: ImageView? = null
     lateinit var imgVsetting: ImageView
     var imgVchannel: ImageView? = null
     var imgVnews: ImageView? = null
     var imgVhomeAd: ImageView? = null
-    private var mFirebaseDatabase: FirebaseDatabase? = null
-    private var databaseReference: DatabaseReference? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,9 +44,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         imgVnews!!.setOnClickListener(this)
         imgVhomeAd = findViewById(R.id.imgVhomeAd)
         imgVhomeAd!!.setOnClickListener(this)
-        mFirebaseDatabase = FirebaseDatabase.getInstance()
-        databaseReference = mFirebaseDatabase!!.getReference()
-        getBanners()
+
+        progerssProgressDialog = ProgressDialog(this)
+        progerssProgressDialog.setTitle("Loading")
+        progerssProgressDialog.setCancelable(false)
+        progerssProgressDialog.show()
+        getBanner1()
     }
 
     override fun onClick(v: View?) {
@@ -50,8 +57,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             when (v.getId()) {
 
                 R.id.imgVchannel -> {
+
                     startActivity(Intent(this, Channels::class.java))
                     overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom)
+
                 }
 
                 R.id.imgVmach -> {
@@ -69,9 +78,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 R.id.imgVhomeAd -> {
                     Log.e("ram", "" + arrayList)
-                    val url = arrayList.get(0).link
                     val i = Intent(Intent.ACTION_VIEW)
-                    i.data = Uri.parse(url)
+                    i.data = Uri.parse(addImagUrl)
                     startActivity(i)
                 }
 
@@ -79,30 +87,33 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
-    fun getBanners() {
-        val query =
-            databaseReference!!.child("banners").child("home")
-        query.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    val note: BannerModel? = dataSnapshot.getValue(BannerModel::class.java)
-                    arrayList.add(note!!)
+    private fun getBanner1() {
+        val call: Call<List<BannerModel>> = ApiClient.getClient.getBanners()
+        call.enqueue(object : Callback<List<BannerModel>> {
+            override fun onResponse(
+                call: Call<List<BannerModel>>?,
+                response: Response<List<BannerModel>>?
+            ) {
+                progerssProgressDialog.dismiss()
+                arrayList.addAll(response!!.body()!!)
+                arrayList.forEach {
+                    addImagUrl = it?.homeModel?.pic
                     Picasso
                         .with(mContext) // give it the context
-                        .load(note?.pic) // load the image
+                        .load(addImagUrl) // load the image
                         .into(imgVhomeAd) // select the ImageView to load it into
                 }
             }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.e("ram", databaseError.details)
+            override fun onFailure(call: Call<List<BannerModel>>?, t: Throwable?) {
+                progerssProgressDialog.dismiss()
             }
+
         })
+
+
+
     }
-
-
-
 
 
 }

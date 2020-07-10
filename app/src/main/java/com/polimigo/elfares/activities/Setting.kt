@@ -1,11 +1,10 @@
 package com.polimigo.elfares.activities
-
 import android.app.AlertDialog
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -13,23 +12,25 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.database.*
 import com.polimigo.elfares.R
-import com.polimigo.elfares.entities.BannerModel
-import com.polimigo.elfares.entities.CommentModel
+import com.polimigo.elfares.entities.banner.BannerModel
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.prompts.*
+import kotlincodes.com.retrofitwithkotlin.retrofit.ApiClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 import kotlin.collections.ArrayList
 
 class Setting : AppCompatActivity(), View.OnClickListener {
+    lateinit var progerssProgressDialog: ProgressDialog
+
     val arrayList = ArrayList<BannerModel>()//Creating an empty arraylist
     private lateinit var mContext: Context
     lateinit var imgVSettingAd: ImageView
+    private lateinit var addImagUrl:String
     lateinit var btnShare: Button
     lateinit var btnMessage: Button
-    private var mFirebaseDatabase: FirebaseDatabase? = null
-    private var databaseReference: DatabaseReference? = null
     lateinit var shareLink:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,11 +43,40 @@ class Setting : AppCompatActivity(), View.OnClickListener {
         btnShare = findViewById(R.id.btnShareApp)
         btnMessage.setOnClickListener(this)
         btnShare.setOnClickListener(this)
-        mFirebaseDatabase = FirebaseDatabase.getInstance()
-        databaseReference = mFirebaseDatabase!!.getReference()
-        getBanners()
+        progerssProgressDialog = ProgressDialog(this)
+        progerssProgressDialog.setTitle("Loading")
+        progerssProgressDialog.setCancelable(false)
+        progerssProgressDialog.show()
+        getBanner1()
         getShareLink()
     }
+
+    private fun getBanner1() {
+        val call: Call<List<BannerModel>> = ApiClient.getClient.getBanners()
+        call.enqueue(object : Callback<List<BannerModel>> {
+            override fun onResponse(
+                call: Call<List<BannerModel>>?,
+                response: Response<List<BannerModel>>?
+            ) {
+                progerssProgressDialog.dismiss()
+                arrayList.addAll(response!!.body()!!)
+                arrayList.forEach {
+                    addImagUrl = it?.newsModel?.pic
+                    Picasso
+                        .with(mContext) // give it the context
+                        .load(addImagUrl) // load the image
+                        .into(imgVSettingAd) // select the ImageView to load it into
+                }
+            }
+
+            override fun onFailure(call: Call<List<BannerModel>>?, t: Throwable?) {
+                progerssProgressDialog.dismiss()
+            }
+
+        })
+
+    }
+
 
     override fun onClick(v: View?) {
         if (v != null) {
@@ -67,9 +97,8 @@ class Setting : AppCompatActivity(), View.OnClickListener {
                 }
 
                 R.id.imagVSettingAds -> {
-                    val url = arrayList.get(0).link
                     val i = Intent(Intent.ACTION_VIEW)
-                    i.data = Uri.parse(url)
+                    i.data = Uri.parse(addImagUrl)
                     startActivity(i)
                 }
             }
@@ -77,40 +106,8 @@ class Setting : AppCompatActivity(), View.OnClickListener {
     }
 
 
-    fun getBanners() {
-        val query =
-            databaseReference!!.child("banners").child("setting")
-        query.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    val note: BannerModel? = dataSnapshot.getValue(BannerModel::class.java)
-                    arrayList.add(note!!)
-                    Picasso
-                        .with(mContext) // give it the context
-                        .load(note.pic) // load the image
-                        .into(imgVSettingAd) // select the ImageView to load it into
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.e("ram", databaseError.details)
-            }
-        })
-    }
-
     fun getShareLink() {
-        val query =
-            databaseReference!!.child("androidLink")
-        query.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    shareLink = dataSnapshot.getValue().toString()
-                }
-            }
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.e("ram", databaseError.details)
-            }
-        })
+
     }
 
 
@@ -145,13 +142,7 @@ class Setting : AppCompatActivity(), View.OnClickListener {
     }
 
     fun addPost(nodeId: String, commentContent: String) {
-        try {
-            val commentsPojoAdd = CommentModel(commentContent)
-            databaseReference!!.child("problems").child(nodeId).setValue(commentContent)
-            toastMessage("تم الحفظ")
-        } catch (e: java.lang.Exception) {
-            e.printStackTrace()
-        }
+
     }
 
     private fun toastMessage(message: String) {

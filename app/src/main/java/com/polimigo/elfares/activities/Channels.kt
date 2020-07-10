@@ -1,5 +1,6 @@
 package com.polimigo.elfares.activities
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -10,31 +11,30 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.*
 import com.polimigo.elfares.R
-import com.polimigo.elfares.adapters.ChannelsAdapter
-import com.polimigo.elfares.entities.BannerModel
-import com.polimigo.elfares.entities.CommentModel
+import com.polimigo.elfares.adapters.*
 import com.polimigo.elfares.entities.ChannelsModel
+import com.polimigo.elfares.entities.banner.BannerModel
 import com.squareup.picasso.Picasso
+import kotlincodes.com.retrofitwithkotlin.retrofit.ApiClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class Channels : AppCompatActivity() , View.OnClickListener{
-
-    private var mFirebaseDatabase: FirebaseDatabase? = null
-    private var databaseReference: DatabaseReference? = null
+class Channels : AppCompatActivity() , View.OnClickListener , OnChannelsItemClickListener {
+    lateinit var progerssProgressDialog: ProgressDialog
     private lateinit var mContext: Context
+    private lateinit var addImagUrl:String
     var imagVchannelAds: ImageView? = null
     var recycleChannels: RecyclerView? = null
     private var mLayoutManager: RecyclerView.LayoutManager? = null
     val arrayBannerAdd = ArrayList<BannerModel>()//Creating an empty arraylist
     val arrayChannels = ArrayList<ChannelsModel>()//Creating an empty arraylist
+    private lateinit var adapter: RecyclerChannelsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_channels)
-        mFirebaseDatabase = FirebaseDatabase.getInstance()
-        databaseReference = mFirebaseDatabase!!.getReference()
         imagVchannelAds = findViewById(R.id.imagVChannelsAds)
         imagVchannelAds?.setOnClickListener(this)
         recycleChannels = findViewById(R.id.recycleNews) as RecyclerView
@@ -42,9 +42,13 @@ class Channels : AppCompatActivity() , View.OnClickListener{
         // use a linear layout manager
         mLayoutManager =  LinearLayoutManager(this);
         recycleChannels!!.setLayoutManager(mLayoutManager);
+        adapter = RecyclerChannelsAdapter(this, arrayChannels, this)
         mContext = this
-        getBanners()
-        getPostst()
+        progerssProgressDialog = ProgressDialog(this)
+        progerssProgressDialog.setTitle("Loading")
+        progerssProgressDialog.setCancelable(false)
+        progerssProgressDialog.show()
+        getBanner1()
 
     }
 
@@ -53,9 +57,8 @@ class Channels : AppCompatActivity() , View.OnClickListener{
             when (v.getId()) {
                 R.id.imagVChannelsAds ->{
                     Log.e("ram", ""+arrayBannerAdd)
-                    val url = arrayBannerAdd.get(0).link
                     val i = Intent(Intent.ACTION_VIEW)
-                    i.data = Uri.parse(url)
+                    i.data = Uri.parse(addImagUrl)
                     startActivity(i)
                 }
 
@@ -64,56 +67,41 @@ class Channels : AppCompatActivity() , View.OnClickListener{
     }
 
 
-
-    fun getPostst() {
-        val query =
-            databaseReference!!.child("channels")
-        query.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    for (issue in dataSnapshot.children) {
-                        val note: ChannelsModel? =
-                            issue.getValue(ChannelsModel::class.java)
-                        // note.setUserId(us\);
-                        arrayChannels.add(note!!)
-                        Log.i("tttt",""+note);
-                    }
-
-                    //Log.e("tttt",arrayList.get(0).getName()+""+arrayList.get(1).getName());
-                    val customAdapter =
-                        ChannelsAdapter(applicationContext, arrayChannels)
-                    recycleChannels?.setAdapter(customAdapter)
-
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.e("ram", databaseError.details)
-            }
-        })
-    }
-
-
-
-
-    fun getBanners() {
-        val query =
-            databaseReference!!.child("banners").child("channels")
-        query.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    val note: BannerModel? = dataSnapshot.getValue(BannerModel::class.java)
-                    arrayBannerAdd.add(note!!)
+    private fun getBanner1() {
+        val call: Call<List<BannerModel>> = ApiClient.getClient.getBanners()
+        call.enqueue(object : Callback<List<BannerModel>> {
+            override fun onResponse(
+                call: Call<List<BannerModel>>?,
+                response: Response<List<BannerModel>>?
+            ) {
+                progerssProgressDialog.dismiss()
+                arrayBannerAdd.addAll(response!!.body()!!)
+                arrayBannerAdd.forEach {
+                    addImagUrl = it?.channelsModel?.pic
                     Picasso
                         .with(mContext) // give it the context
-                        .load(note?.pic) // load the image
+                        .load(addImagUrl) // load the image
                         .into(imagVchannelAds) // select the ImageView to load it into
                 }
             }
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.e("ram", databaseError.details)
+
+            override fun onFailure(call: Call<List<BannerModel>>?, t: Throwable?) {
+                progerssProgressDialog.dismiss()
             }
+
         })
+
+    }
+
+    override fun OnChannelsItemClickListener(channelsModel: ChannelsModel) {
+        toFrame(channelsModel)
+    }
+
+    fun toFrame(channelsModel: ChannelsModel) {
+        var i = Intent(this, ChannelsFrame::class.java)
+        i.putExtra("ID", channelsModel.link)
+        startActivity(i)
+        overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom)
     }
 
 }

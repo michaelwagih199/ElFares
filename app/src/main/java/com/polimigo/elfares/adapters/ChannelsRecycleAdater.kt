@@ -1,5 +1,4 @@
 package com.polimigo.elfares.adapters
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -8,22 +7,20 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.polimigo.elfares.R
-import com.polimigo.elfares.entities.NewsModel
+import com.polimigo.elfares.entities.ChannelsModel
 import com.squareup.picasso.Picasso
 
-
-
-class MyNewsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(
         context: Context,
-        model: NewsModel,
-        channelsClickListener: OnItemNewsClickListener
+        model: ChannelsModel,
+        clickListener: OnChannelsItemClickListener
     ) {
         val txtVChannelLabel =
             itemView.findViewById<TextView>(R.id.txtVChannelLabel) as TextView
         val imgVchannelLogo = itemView.findViewById<ImageView>(R.id.imgVchannelLogo) as ImageView
 
-        txtVChannelLabel.text = model.title
+        txtVChannelLabel.text = model.name
         // load the image with Picasso
         Picasso
             .with(context) // give it the context
@@ -31,36 +28,36 @@ class MyNewsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             .into(imgVchannelLogo) // select the ImageView to load it into
 
         itemView.setOnClickListener {
-            channelsClickListener.onItemClicked(model)
+            clickListener.OnChannelsItemClickListener(model)
         }
-
 
     }
 }
 
-
-class NewsAdapter(
+class RecyclerChannelsAdapter(
     var context: Context,
-    var news: MutableList<NewsModel>,
-    val itemChannelsClickListener: OnItemNewsClickListener
-) : RecyclerView.Adapter<MyNewsHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, position: Int): MyNewsHolder {
+    var news: MutableList<ChannelsModel>,
+    val itemClickListener: OnChannelsItemClickListener
+) : RecyclerView.Adapter<Holder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, position: Int): Holder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.channels_item, parent, false)
-        return MyNewsHolder(view)
+        return Holder(view)
     }
 
     override fun getItemCount(): Int {
         return news.size
     }
 
-    override fun onBindViewHolder(myHolder: MyNewsHolder, position: Int) {
+    override fun onBindViewHolder(myHolder: Holder, position: Int) {
         val news = news.get(position)
-        myHolder.bind(context, news, itemChannelsClickListener)
+        myHolder.bind(context, news, itemClickListener)
     }
 }
 
 
-interface OnItemNewsClickListener {
-    fun onItemClicked(newsAdapter: NewsModel)
+interface OnChannelsItemClickListener {
+    fun OnChannelsItemClickListener(channelsModel: ChannelsModel)
 }
+
+
