@@ -1,4 +1,3 @@
-
 package com.polimigo.elfares.activities
 
 import android.app.ProgressDialog
@@ -10,9 +9,11 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.polimigo.elfares.R
+import com.polimigo.elfares.entities.AppSettingModel
 import com.polimigo.elfares.entities.banner.BannerModel
-import com.squareup.picasso.Picasso
+import com.polimigo.elfares.service.SharedPrefrenceHelper
 import kotlincodes.com.retrofitwithkotlin.retrofit.ApiClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var progerssProgressDialog: ProgressDialog
     private lateinit var mContext: Context
     private lateinit var addImagUrl:String
+    private lateinit var linkUrl:String
     var imgVmach: ImageView? = null
     lateinit var imgVsetting: ImageView
     var imgVchannel: ImageView? = null
@@ -33,6 +35,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         mContext = this
         imgVchannel = findViewById(R.id.imgVchannel)
         imgVsetting = findViewById(R.id.imgVsetting)
@@ -50,6 +53,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         progerssProgressDialog.setCancelable(false)
         progerssProgressDialog.show()
         getBanner1()
+        getShareLink()
+
+
     }
 
     override fun onClick(v: View?) {
@@ -57,7 +63,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             when (v.getId()) {
 
                 R.id.imgVchannel -> {
-
                     startActivity(Intent(this, Channels::class.java))
                     overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom)
 
@@ -79,7 +84,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 R.id.imgVhomeAd -> {
                     Log.e("ram", "" + arrayList)
                     val i = Intent(Intent.ACTION_VIEW)
-                    i.data = Uri.parse(addImagUrl)
+                    i.data = Uri.parse(linkUrl)
                     startActivity(i)
                 }
 
@@ -98,10 +103,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 arrayList.addAll(response!!.body()!!)
                 arrayList.forEach {
                     addImagUrl = it?.homeModel?.pic
-                    Picasso
-                        .with(mContext) // give it the context
-                        .load(addImagUrl) // load the image
-                        .into(imgVhomeAd) // select the ImageView to load it into
+                    linkUrl = it?.homeModel?.link
+                    imgVhomeAd?.let { it1 ->
+                        Glide
+                            .with(mContext) // give it the context
+                            .load(addImagUrl) // load the image
+                            .error(R.drawable.ic_baseline_error_24)
+                            .placeholder(R.drawable.ic_baseline_image_24)
+                            .into(it1)
+                    } // select the ImageView to load it into
                 }
             }
 
@@ -113,6 +123,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
+    }
+
+    fun getShareLink() {
+        val call: Call<AppSettingModel> = ApiClient.getClient.getSetting()
+        call.enqueue(object : Callback<AppSettingModel> {
+            override fun onResponse(
+                call: Call<AppSettingModel>?,
+                response: Response<AppSettingModel>?
+            ) {
+                var appSettingFoo: AppSettingModel
+                appSettingFoo = response!!.body()!!
+                SharedPrefrenceHelper().setReview(mContext,appSettingFoo.review)
+            }
+
+            override fun onFailure(call: Call<AppSettingModel>, t: Throwable) {
+
+            }
+
+        })
     }
 
 

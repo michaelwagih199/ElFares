@@ -10,44 +10,47 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.polimigo.elfares.R
-import com.polimigo.elfares.adapters.OnMatchesItemClickListener
-import com.polimigo.elfares.adapters.RecyclerMachesAdapter
+import com.polimigo.elfares.adapters.MultipleTypeAdapter
+import com.polimigo.elfares.entities.MatchModel
 import com.polimigo.elfares.entities.banner.BannerModel
-import com.polimigo.elfares.entities.matches.MachesModel
-import com.squareup.picasso.Picasso
+import com.polimigo.elfares.service.SharedPrefrenceHelper
 import kotlincodes.com.retrofitwithkotlin.retrofit.ApiClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class Maches : AppCompatActivity() , View.OnClickListener , OnMatchesItemClickListener {
+class Maches : AppCompatActivity(), View.OnClickListener {
     lateinit var progerssProgressDialog: ProgressDialog
     private lateinit var mContext: Context
     var imagVMachesAds: ImageView? = null
     var MachesRecycle: RecyclerView? = null
-    private lateinit var addImagUrl:String
+    private lateinit var addImagUrl: String
     private var mLayoutManager: RecyclerView.LayoutManager? = null
     val arrayBannerAdd = ArrayList<BannerModel>()//Creating an empty arraylist
-    val arrayMaches = ArrayList<MachesModel>()//Creating an empty arraylist
-    private lateinit var adapter: RecyclerMachesAdapter
+    val arrayMaches = ArrayList<MatchModel>()//Creating an empty arraylist
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maches)
         MachesRecycle = findViewById(R.id.MachesRecycle) as RecyclerView
-        imagVMachesAds =findViewById(R.id.imagVMachesAds)
+        imagVMachesAds = findViewById(R.id.imagVMachesAds)
         imagVMachesAds!!.setOnClickListener(this)
-        MachesRecycle!!.setHasFixedSize(true);
-        mLayoutManager = LinearLayoutManager(this);
-        MachesRecycle!!.setLayoutManager(mLayoutManager)
-        adapter = RecyclerMachesAdapter(this, arrayMaches, this)
+        mContext = this
+        MachesRecycle!!.setHasFixedSize(true)
+        // use a linear layout manager
+        MachesRecycle?.adapter =
+            MultipleTypeAdapter(this, arrayMaches, SharedPrefrenceHelper().getReview(mContext))
+        MachesRecycle?.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         mContext = this
         progerssProgressDialog = ProgressDialog(this)
         progerssProgressDialog.setTitle("Loading")
         progerssProgressDialog.setCancelable(false)
         progerssProgressDialog.show()
         getBanner1()
+        getMatches()
     }
 
     override fun onClick(v: View?) {
@@ -75,11 +78,13 @@ class Maches : AppCompatActivity() , View.OnClickListener , OnMatchesItemClickLi
                 progerssProgressDialog.dismiss()
                 arrayBannerAdd.addAll(response!!.body()!!)
                 arrayBannerAdd.forEach {
-                    addImagUrl = it?.matchesModel?.pic
-                    Picasso
-                        .with(mContext) // give it the context
-                        .load(addImagUrl) // load the image
-                        .into(imagVMachesAds) // select the ImageView to load it into
+                    addImagUrl = it?.matchesModel?.link
+                    imagVMachesAds?.let { it1 ->
+                        Glide
+                            .with(mContext) // give it the context
+                            .load(it?.matchesModel?.pic) // load the image
+                            .into(it1)
+                    } // select the ImageView to load it into
                 }
             }
 
@@ -92,8 +97,27 @@ class Maches : AppCompatActivity() , View.OnClickListener , OnMatchesItemClickLi
     }
 
 
-    override fun OnMatchesItemClickListener(machesModel: MachesModel) {
+    private fun getMatches() {
+        val call: Call<List<MatchModel>> = ApiClient.getClient.getEnableMatches(true)
+        call.enqueue(object : Callback<List<MatchModel>> {
+
+            override fun onResponse(
+                call: Call<List<MatchModel>>?,
+                response: Response<List<MatchModel>>?
+            ) {
+                progerssProgressDialog.dismiss()
+                arrayMaches.addAll(response!!.body()!!)
+                Log.i("tag", "" + response!!.body()!!)
+                MachesRecycle?.adapter?.notifyDataSetChanged()
+            }
+
+            override fun onFailure(call: Call<List<MatchModel>>?, t: Throwable?) {
+                progerssProgressDialog.dismiss()
+            }
+
+        })
 
     }
+
 
 }

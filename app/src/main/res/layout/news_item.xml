@@ -14,13 +14,11 @@
     android:orientation="horizontal"
     android:padding="@dimen/_14ssp"
     >
-
     <androidx.cardview.widget.CardView
-        android:layout_width="@dimen/_50ssp"
-        android:layout_height="@dimen/_50ssp"
-        android:layout_margin="@dimen/_6ssp"
+        android:layout_width="@dimen/_70ssp"
+        android:layout_height="@dimen/_60ssp"
         android:layout_weight=".5"
-        app:cardCornerRadius="20dp">
+        app:cardCornerRadius="@dimen/_10ssp">
 
         <ImageView
             android:id="@+id/imgVNewsLogo"
@@ -42,6 +40,7 @@
         android:layout_marginLeft="@dimen/_8ssp"
         android:layout_marginRight="@dimen/_8ssp"
         />
+
 </LinearLayout>
 
 

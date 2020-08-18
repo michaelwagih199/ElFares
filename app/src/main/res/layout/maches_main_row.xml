@@ -120,10 +120,10 @@
                         <TextView
                             android:id="@+id/tvNameT2"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="15dp"
                             android:layout_gravity="center"
-                            android:text="فالينسيا"
                             android:layout_marginTop="@dimen/_8ssp"
+                            android:text="فالينسيا"
                             android:textColor="@android:color/black" />
                     </LinearLayout>
                 </LinearLayout>

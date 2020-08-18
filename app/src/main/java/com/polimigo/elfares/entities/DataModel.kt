@@ -1,5 +1,4 @@
 package com.polimigo.elfares.entities
-
 import com.google.gson.annotations.SerializedName
 
 data class DataModel(

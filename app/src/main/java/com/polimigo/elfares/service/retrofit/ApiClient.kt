@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
 
-    var BASE_URL:String="https://elfares-api.herokuapp.com/api/v1/"
+    var BASE_URL:String="http://46.101.236.201:3014/api/v1/"
     val getClient: ApiInterface
         get() {
 

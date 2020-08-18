@@ -10,32 +10,27 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.InterstitialAd
 import com.polimigo.elfares.R
-import com.polimigo.elfares.adapters.NewsAdapter
-import com.polimigo.elfares.adapters.OnItemNewsClickListener
+import com.polimigo.elfares.adapters.DataNewsAdpter
 import com.polimigo.elfares.entities.NewsModel
 import com.polimigo.elfares.entities.banner.BannerModel
-import com.squareup.picasso.Picasso
 import kotlincodes.com.retrofitwithkotlin.retrofit.ApiClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class News : AppCompatActivity(), View.OnClickListener, OnItemNewsClickListener {
+class News : AppCompatActivity(), View.OnClickListener , DataNewsAdpter.OnItemNewsClickListener {
     lateinit var progerssProgressDialog: ProgressDialog
     private lateinit var addImagUrl:String
-
     private lateinit var mContext: Context
     var imagVNewsAds: ImageView? = null
     var recycleNews: RecyclerView? = null
     private var mLayoutManager: RecyclerView.LayoutManager? = null
     val arrayBannerAdd = ArrayList<BannerModel>()//Creating an empty arraylist
     val arrayNews = ArrayList<NewsModel>()//Creating an empty arraylist
-    private lateinit var adapter: NewsAdapter
-    lateinit var mAdView: AdView
     private lateinit var mInterstitialAd: InterstitialAd
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,16 +43,36 @@ class News : AppCompatActivity(), View.OnClickListener, OnItemNewsClickListener 
         imagVNewsAds = findViewById(R.id.imagVNewsAds)
         imagVNewsAds?.setOnClickListener(this)
         recycleNews = findViewById(R.id.recycleNews) as RecyclerView
-        recycleNews!!.setHasFixedSize(true);
-        mLayoutManager = LinearLayoutManager(this);
-        recycleNews!!.setLayoutManager(mLayoutManager)
-        adapter = NewsAdapter(this, arrayNews, this)
+
+        recycleNews?.adapter = DataNewsAdpter(arrayNews, this,this)
+        recycleNews?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
         mContext = this
         progerssProgressDialog = ProgressDialog(this)
         progerssProgressDialog.setTitle("Loading")
         progerssProgressDialog.setCancelable(false)
         progerssProgressDialog.show()
         getBanner1()
+        getNews()
+    }
+
+    private fun getNews() {
+        val call: Call<List<NewsModel>> = ApiClient.getClient.getNews()
+        call.enqueue(object : Callback<List<NewsModel>> {
+
+            override fun onResponse(call: Call<List<NewsModel>>?, response: Response<List<NewsModel>>?) {
+                progerssProgressDialog.dismiss()
+                arrayNews.addAll(response!!.body()!!)
+
+                recycleNews?.adapter?.notifyDataSetChanged()
+            }
+
+            override fun onFailure(call: Call<List<NewsModel>>?, t: Throwable?) {
+                progerssProgressDialog.dismiss()
+            }
+
+        })
+
     }
 
     private fun getBanner1() {
@@ -70,11 +85,15 @@ class News : AppCompatActivity(), View.OnClickListener, OnItemNewsClickListener 
                 progerssProgressDialog.dismiss()
                 arrayBannerAdd.addAll(response!!.body()!!)
                 arrayBannerAdd.forEach {
-                    addImagUrl = it?.newsModel?.pic
-                    Picasso
-                        .with(mContext) // give it the context
-                        .load(addImagUrl) // load the image
-                        .into(imagVNewsAds) // select the ImageView to load it into
+                    addImagUrl = it?.newsBannerModel?.link
+                    imagVNewsAds?.let { it1 ->
+                        Glide
+                            .with(mContext) // give it the context
+                            .load(it?.newsBannerModel?.pic) // load the image
+                            .error(R.drawable.ic_baseline_error_24)
+                            .placeholder(R.drawable.ic_baseline_image_24)
+                            .into(it1)
+                    } // select the ImageView to load it into
                 }
             }
 
@@ -85,7 +104,6 @@ class News : AppCompatActivity(), View.OnClickListener, OnItemNewsClickListener 
         })
 
     }
-
 
     override fun onClick(v: View?) {
         if (v != null) {
@@ -100,16 +118,15 @@ class News : AppCompatActivity(), View.OnClickListener, OnItemNewsClickListener 
         }
     }
 
-
-    override fun onItemClicked(newsModel: NewsModel) {
-        toFrame(newsModel)
-    }
-
     fun toFrame(newsModel: NewsModel) {
         var i = Intent(this, NewsFrame::class.java)
         i.putExtra("ID", newsModel.link)
         startActivity(i)
         overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom)
+    }
+
+    override fun onItemClicked(newsAdapter: NewsModel) {
+        toFrame(newsAdapter)
     }
 
 

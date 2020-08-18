@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -12,9 +13,12 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.polimigo.elfares.R
+import com.polimigo.elfares.entities.AppSettingModel
+import com.polimigo.elfares.entities.IssuesResponseModel
+import com.polimigo.elfares.entities.IssusModel
 import com.polimigo.elfares.entities.banner.BannerModel
-import com.squareup.picasso.Picasso
 import kotlincodes.com.retrofitwithkotlin.retrofit.ApiClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,7 +32,7 @@ class Setting : AppCompatActivity(), View.OnClickListener {
     val arrayList = ArrayList<BannerModel>()//Creating an empty arraylist
     private lateinit var mContext: Context
     lateinit var imgVSettingAd: ImageView
-    private lateinit var addImagUrl:String
+    private lateinit var addImagUrl: String
     lateinit var btnShare: Button
     lateinit var btnMessage: Button
     lateinit var shareLink:String
@@ -61,18 +65,18 @@ class Setting : AppCompatActivity(), View.OnClickListener {
                 progerssProgressDialog.dismiss()
                 arrayList.addAll(response!!.body()!!)
                 arrayList.forEach {
-                    addImagUrl = it?.newsModel?.pic
-                    Picasso
+                    addImagUrl = it?.newsBannerModel?.pic
+                    Glide
                         .with(mContext) // give it the context
                         .load(addImagUrl) // load the image
+                        .error(R.drawable.ic_baseline_error_24)
+                        .placeholder(R.drawable.ic_baseline_image_24)
                         .into(imgVSettingAd) // select the ImageView to load it into
                 }
             }
-
             override fun onFailure(call: Call<List<BannerModel>>?, t: Throwable?) {
                 progerssProgressDialog.dismiss()
             }
-
         })
 
     }
@@ -107,7 +111,22 @@ class Setting : AppCompatActivity(), View.OnClickListener {
 
 
     fun getShareLink() {
+        val call: Call<AppSettingModel> = ApiClient.getClient.getSetting()
+        call.enqueue(object : Callback<AppSettingModel> {
+            override fun onResponse(
+                call: Call<AppSettingModel>?,
+                response: Response<AppSettingModel>?
+            ) {
+                var appSettingFoo: AppSettingModel
+                appSettingFoo = response!!.body()!!
+                shareLink = appSettingFoo.androidLink
+            }
 
+            override fun onFailure(call: Call<AppSettingModel>, t: Throwable) {
+
+            }
+
+        })
     }
 
 
@@ -126,7 +145,8 @@ class Setting : AppCompatActivity(), View.OnClickListener {
             .setPositiveButton("أرسل") { dialog, id -> // get user input and set it to result
                 // edit text
                 try {
-                    addPost(generateCode(), userInput.text.toString())
+                    val Issues = IssusModel(userInput.text.toString(),generateCode())
+                    addPost(Issues)
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -141,9 +161,24 @@ class Setting : AppCompatActivity(), View.OnClickListener {
         alertDialog.show()
     }
 
-    fun addPost(nodeId: String, commentContent: String) {
 
+    fun addPost(issusModel: IssusModel){
+        val call: Call<IssuesResponseModel> = ApiClient.getClient.postIssues(issusModel)
+        call.enqueue(object : Callback<IssuesResponseModel> {
+            override fun onResponse(
+                call: Call<IssuesResponseModel>?,
+                response: Response<IssuesResponseModel>?
+            ) {
+                toastMessage("تم ارسال رسالتك بنجاح")
+                Log.i("message",""+response!!.body()!!)
+            }
+            override fun onFailure(call: Call<IssuesResponseModel>, t: Throwable) {
+
+            }
+
+        })
     }
+
 
     private fun toastMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
