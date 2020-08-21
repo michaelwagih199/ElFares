@@ -55,7 +55,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         getBanner1()
         getShareLink()
 
-
     }
 
     override fun onClick(v: View?) {

@@ -7,10 +7,6 @@
     android:orientation="vertical"
     tools:context=".activities.vedioPlayer">
 
-    <com.devbrackets.android.exomedia.ui.widget.VideoView
-        android:id="@+id/video_view_new"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:useDefaultControls="true"/>
+
 
 </LinearLayout>

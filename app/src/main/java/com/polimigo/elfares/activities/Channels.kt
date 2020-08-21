@@ -58,7 +58,8 @@ class Channels : AppCompatActivity(), View.OnClickListener,
         getShareLink()
 
         mInterstitialAd = InterstitialAd(this)
-        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/8691691433"
+//        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/8691691433"
+        mInterstitialAd.adUnitId = getString(R.string.add_unit_old);
         mInterstitialAd.loadAd(AdRequest.Builder().build())
 
     }
@@ -163,9 +164,7 @@ class Channels : AppCompatActivity(), View.OnClickListener,
                 appSettingFoo = response!!.body()!!
                 review = appSettingFoo.review
             }
-
             override fun onFailure(call: Call<AppSettingModel>, t: Throwable) {
-
             }
 
         })
@@ -184,16 +183,6 @@ class Channels : AppCompatActivity(), View.OnClickListener,
         builder.setPositiveButton("Yes") { dialogInterface, which ->
             Toast.makeText(applicationContext, "clicked yes", Toast.LENGTH_LONG).show()
         }
-
-//        //performing cancel action
-//        builder.setNeutralButton("Cancel"){dialogInterface , which ->
-//            Toast.makeText(applicationContext,"clicked cancel\n operation cancel",Toast.LENGTH_LONG).show()
-//        }
-//        //performing negative action
-//        builder.setNegativeButton("No"){dialogInterface, which ->
-//            Toast.makeText(applicationContext,"clicked No",Toast.LENGTH_LONG).show()
-//        }
-        // Create the AlertDialog
 
         val alertDialog: androidx.appcompat.app.AlertDialog = builder.create()
         // Set other dialog properties

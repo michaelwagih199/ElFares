@@ -43,7 +43,7 @@ public class VedioView extends AppCompatActivity {
 
         player = new SimpleExoPlayer.Builder(this).build();
         playerView.setPlayer(player);
-        Uri uri = Uri.parse(getString(R.string.media_url_m3u8));
+//        Uri uri = Uri.parse(getString(R.string.media_url_m3u8));
 
         Uri uri2 = Uri.parse(VIDEO_PATH);
         MediaSource mediaSource = buildMediaSource(uri2);

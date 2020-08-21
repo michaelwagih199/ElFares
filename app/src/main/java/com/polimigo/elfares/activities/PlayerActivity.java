@@ -7,15 +7,7 @@ import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
-import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.ext.ima.ImaAdsLoader;
-import com.google.android.exoplayer2.source.MediaSource;
-import com.google.android.exoplayer2.source.ProgressiveMediaSource;
-import com.google.android.exoplayer2.source.ads.AdsMediaSource;
-import com.google.android.exoplayer2.ui.PlayerView;
-import com.google.android.exoplayer2.upstream.DataSource;
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
-import com.google.android.exoplayer2.util.Util;
+
 import com.polimigo.elfares.R;
 
 import java.net.URL;
@@ -33,7 +25,7 @@ public class PlayerActivity extends AppCompatActivity {
         myVideoView = (VideoView)this.findViewById(R.id.myVideoView);
         MediaController mc = new MediaController(this);
         myVideoView.setMediaController(mc);
-        urlStream =getString(R.string.media_url_m3u8);
+//        urlStream =getString(R.string.media_url_m3u8);
 
         myVideoView.setVideoURI(Uri.parse(urlStream));
 

@@ -2,11 +2,13 @@ package com.polimigo.elfares;
 
 import android.app.Application;
 
+import com.google.firebase.FirebaseApp;
 import com.onesignal.OneSignal;
 
 public class ApplicationClass extends Application {
     @Override
     public void onCreate() {
+        FirebaseApp.initializeApp(this);
         super.onCreate();
         // OneSignal Initialization
         OneSignal.startInit(this)
